@@ -113,13 +113,14 @@ def get_residential(all_employees):
     residential ={}
     rename_list = ['1-Marion Drive', '1-Park Place', '1-Scattered Site Apt Mgmt']
     for key in all_employees.keys():
+        if all_employees[key]['union'] == 'Non-Union':
+            continue
         if all_employees[key]['home_dept']:
             if 221 <= int(all_employees[key]['home_dept'][:3]) <= 260:
                 program = all_employees[key]['home_dept']
                 all_employees[key]['home_dept'] = program.replace(program[:3], '1')
                 if all_employees[key]['home_dept'] in rename_list:
                     all_employees[key]['home_dept'] = '1-SLP/PP/Marion'
-                    residential[key] = all_employees[key]
                 residential[key] =  all_employees[key]
     return residential       
 
