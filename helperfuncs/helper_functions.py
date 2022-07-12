@@ -34,7 +34,7 @@ def update_residential_lists(employees, tm_session, list_dict):
         # 1. Delete all contacts in that list or create the list.
         list_id = delete_or_create_list(key, list_dict, tm_session)
 
-        time.sleep(1)
+        time.sleep(0.5)
         #####################################
         for employee in value:
             # Add to list
