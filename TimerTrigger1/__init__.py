@@ -65,9 +65,12 @@ def main(mytimer: func.TimerRequest) -> None:
     
     helper_functions.update_residential_lists(residential, tm_session, list_dict) 
     
-    payload = all_employees
+    payload_list = []
+    for k, v in all_employees.items():
+        payload_list.append(v)
+
     url = "https://prod-111.westus.logic.azure.com:443/workflows/857a1997c5924c6c9c8c5dd1c381fbac/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=4nERQqLXXbqWSYSrJJCU8KIm25692HKHD6NdtA2Ethc"
-    r = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(payload))
+    r = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(payload_list))
 
     logging.info("All done....\/\/\/\/\/\/\/\/\/\/\/")
 
