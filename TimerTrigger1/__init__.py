@@ -37,7 +37,6 @@ def main(mytimer: func.TimerRequest) -> None:
     all_employees = employee_list_helpers.get_active_employees(headers, company_id)
     all_employees = employee_list_helpers.build_employees_dict(all_employees, union_dict, home_depts, headers, company_id)
 
-
     clean = employee_cleanup.remove_na_employees(all_employees) 
     all_employees = employee_cleanup.clean_phones_or_remove(clean)
 

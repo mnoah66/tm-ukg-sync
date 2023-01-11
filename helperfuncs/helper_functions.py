@@ -1,6 +1,7 @@
 
 from collections import defaultdict
 import time
+import logging
 
 def delete_or_create_list(key, list_dict, tm_session):
     try:
@@ -50,7 +51,10 @@ def update_residential_lists(employees, tm_session, list_dict):
                 # Get their TM ID and add to temp list
                 url=f"https://rest.textmagic.com/api/v2/contacts/phone/{employee['cell']}"
                 r = tm_session.get(url).json()
-                employee_id = add_if_in_another_list.append(str(r['id'])) 
+                try:
+                    add_if_in_another_list.append(str(r['id'])) 
+                except:
+                    pass
         if add_if_in_another_list:
             payload = {
                 "contacts": ",".join(add_if_in_another_list)
@@ -84,7 +88,10 @@ def update_non_union_list(non_union, tm_session):
             # Get their TM ID and add to temp list
             url=f"https://rest.textmagic.com/api/v2/contacts/phone/{value['cell']}"
             r = tm_session.get(url).json()
-            add_if_in_another_list.append(str(r['id'])) 
+            try:
+                add_if_in_another_list.append(str(r['id'])) 
+            except:
+                pass
             
     if add_if_in_another_list:
         payload = {
@@ -121,7 +128,11 @@ def update_union_list(union, tm_session):
             # Get their TM ID and add to temp list
             url=f"https://rest.textmagic.com/api/v2/contacts/phone/{value['cell']}"
             r = tm_session.get(url).json()
-            add_if_in_another_list.append(str(r['id'])) 
+            
+            try:
+                add_if_in_another_list.append(str(r['id'])) 
+            except:
+                pass
     if add_if_in_another_list:
         payload = {
             "contacts": ",".join(add_if_in_another_list)
@@ -157,7 +168,10 @@ def update_subs_list(subs, tm_session):
             # Get their TM ID and add to temp list
             url=f"https://rest.textmagic.com/api/v2/contacts/phone/{value['cell']}"
             r = tm_session.get(url).json()
-            add_if_in_another_list.append(str(r['id'])) 
+            try:
+                add_if_in_another_list.append(str(r['id']))
+            except:
+                pass
             
     if add_if_in_another_list:
         payload = {

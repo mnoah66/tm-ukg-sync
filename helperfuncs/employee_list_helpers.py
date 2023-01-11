@@ -139,6 +139,7 @@ def get_union(all_employees, subs):
         #Union, opted-in, NOT in SUBS
         if (all_employees[key]['union'] != "Non-Union") and (all_employees[key]['opt'] == "Opt In") and (key not in subs):
             union[key] = all_employees[key]
+            print(union[key])
     return union
 
 # Get Non-Union List that have opted-in
