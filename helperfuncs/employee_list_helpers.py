@@ -104,7 +104,7 @@ def build_employees_dict(all_employees, union_dict, home_depts, headers, company
             all_employees[key]['union'] = union_dict[union]
         except:
             all_employees[key]['union'] = 'NA'
-        time.sleep(0.3)
+        time.sleep(0.1)
     return all_employees
 
 

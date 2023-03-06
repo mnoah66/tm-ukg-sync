@@ -17,7 +17,7 @@ def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(
         tzinfo=datetime.timezone.utc).isoformat()
 
-    logging.info("Starting now which should be 03:00 UTC, so 11pm Eastern...")
+    logging.info("Starting now which should be 03:00 UTC, so 10 or 11pm Eastern...")
     company_id = str(os.getenv('COMPANYID'))
     print(company_id)
 
